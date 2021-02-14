@@ -80,6 +80,42 @@ class RadioTest {
         int expected = 9;
         assertEquals(expected, radio.getCurrentStation());
     }
+    @Test
+    public void setVolumeSoundHigherLimit() {
+        Radio radio = new Radio();
+        int volumeSound = 11;
+        int expected = 0;
+        radio.setVolumeSound(volumeSound);
+        assertEquals(expected, radio.getVolumeSound());
+
+    }
+    @Test
+    public void setVolumeSoundLowerLimit() {
+        Radio radio = new Radio();
+        int volumeSound = -1;
+        int expected = 0;
+        radio.setVolumeSound(volumeSound);
+        assertEquals(expected, radio.getVolumeSound());
+
+    }
+    @Test
+    public void setCurrentStationLowerLimit() {
+        Radio radio = new Radio();
+        int currentStation = -1;
+        int expected = 0;
+        radio.setCurrentStation(currentStation);
+        assertEquals(expected, radio.getCurrentStation());
+
+    }
+    @Test
+    public void setCurrentStationHigherLimit() {
+        Radio radio = new Radio();
+        int currentStation = 10;
+        int expected = 0;
+        radio.setCurrentStation(currentStation);
+        assertEquals(expected, radio.getCurrentStation());
+
+    }
 
 
 }
