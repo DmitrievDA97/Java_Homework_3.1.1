@@ -10,6 +10,12 @@ public class Radio {
     }
 
     public void setVolumeSound(int volumeSound) {
+        if (volumeSound > 10) {
+            return;
+        }
+        if (volumeSound < 0) {
+            return;
+        }
         this.volumeSound = volumeSound;
     }
     public int plusVolume() {
@@ -30,6 +36,12 @@ public class Radio {
     }
 
     public void setCurrentStation(int currentStation) {
+        if (currentStation > 9) {
+            return;
+        }
+        if (currentStation < 0) {
+            return;
+        }
         this.currentStation = currentStation;
     }
 
@@ -45,46 +57,6 @@ public class Radio {
             currentStation = 9;
         return currentStation;
     }
-    public int zeroStation () {
-        currentStation = 0;
-        return currentStation;
-    }
 
-    public int firstStation () {
-        currentStation = 1;
-        return currentStation;
-    }
-    public int secondStation () {
-        currentStation = 2;
-        return currentStation;
-    }
-    public int thirdStation () {
-        currentStation = 3;
-        return currentStation;
-    }
-    public int fourthStation () {
-        currentStation = 4;
-        return currentStation;
-    }
-    public int fifthStation () {
-        currentStation = 5;
-        return currentStation;
-    }
-    public int sixthStation () {
-        currentStation = 6;
-        return currentStation;
-    }
-    public int seventhStation () {
-        currentStation = 7;
-        return currentStation;
-    }
-    public int eighthStation () {
-        currentStation = 8;
-        return currentStation;
-    }
-    public int ninthStation () {
-        currentStation = 9;
-        return currentStation;
-    }
 
 }
