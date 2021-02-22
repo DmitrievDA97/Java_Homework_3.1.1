@@ -1,27 +1,41 @@
 package ru.netology;
 
 public class Radio {
-    private int currentStation;
-    private int volumeSound;
-
-
-    public int getVolumeSound() {
-        return volumeSound;
+    private int currentStation ;
+    private int volumeSound ;
+    private int maxStation = 10;
+    public Radio() {
     }
 
-    public void setVolumeSound(int volumeSound) {
-        if (volumeSound > 10) {
+    public Radio(int currentStation, int volumeSound, int maxStation) {
+        if (currentStation > maxStation) {
+            return;
+        }
+        if (currentStation < 0) {
+            return;
+        }
+        this.currentStation = currentStation;
+        if (volumeSound > 100) {
             return;
         }
         if (volumeSound < 0) {
             return;
         }
         this.volumeSound = volumeSound;
+        this.maxStation = maxStation;
+    }
+
+    public int getVolumeSound() {
+        return volumeSound;
+    }
+
+    public void setVolumeSound(int volumeSound) {
+        this.volumeSound = volumeSound;
     }
     public int plusVolume() {
         volumeSound += 1;
-        if (volumeSound > 10)
-            volumeSound = 10;
+        if (volumeSound > 100)
+            volumeSound = 100;
         return volumeSound;
     }
     public int minusVolume () {
@@ -36,25 +50,27 @@ public class Radio {
     }
 
     public void setCurrentStation(int currentStation) {
-        if (currentStation > 9) {
-            return;
-        }
-        if (currentStation < 0) {
-            return;
-        }
         this.currentStation = currentStation;
+
+    }
+    public int getMaxStation() {
+        return maxStation;
+    }
+
+    public void setMaxStation(int maxStation) {
+        this.maxStation = maxStation;
     }
 
     public int nextStation () {
         currentStation += 1;
-        if (currentStation == 10)
+        if (currentStation > maxStation)
             currentStation = 0;
         return currentStation;
     }
     public int prevStation () {
         currentStation -= 1;
         if (currentStation == -1)
-            currentStation = 9;
+            currentStation = maxStation;
         return currentStation;
     }
 
