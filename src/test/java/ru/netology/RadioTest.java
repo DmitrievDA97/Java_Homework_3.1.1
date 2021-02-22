@@ -5,114 +5,91 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
+
     @Test
     void plusVolumeMax() {
-        Radio radio = new Radio();
-        int volumeSound = 10;
-        radio.setVolumeSound(volumeSound);
+        Radio radio = new Radio(1,100,10);
         radio.plusVolume();
-        int expected = 10;
+        int expected = 100;
         assertEquals(expected, radio.getVolumeSound());
     }
     @Test
     void plusVolume() {
-        Radio radio = new Radio();
-        int volumeSound = 8;
-        radio.setVolumeSound(volumeSound);
+        Radio radio = new Radio(1,10,10);
         radio.plusVolume();
-        int expected = 9;
+        int expected = 11;
         assertEquals(expected, radio.getVolumeSound());
     }
 
     @Test
     void minusVolumeMin() {
-        Radio radio = new Radio();
-        int volumeSound = 0;
-        radio.setVolumeSound(volumeSound);
+        Radio radio = new Radio(1,0,10);
         radio.minusVolume();
         int expected = 0;
         assertEquals(expected, radio.getVolumeSound());
     }
     @Test
     void minusVolume() {
-        Radio radio = new Radio();
-        int volumeSound = 4;
-        radio.setVolumeSound(volumeSound);
+        Radio radio = new Radio(1,100,10);
         radio.minusVolume();
-        int expected = 3;
+        int expected = 99;
         assertEquals(expected, radio.getVolumeSound());
     }
 
     @Test
     void nextStationFromMaxToMin() {
-        Radio radio = new Radio();
-        int currentStation = 9;
-        radio.setCurrentStation(currentStation);
+        Radio radio = new Radio(10,100,10);
         radio.nextStation();
         int expected = 0;
         assertEquals(expected, radio.getCurrentStation());
     }
     @Test
     void nextStation() {
-        Radio radio = new Radio();
-        int currentStation = 7;
-        radio.setCurrentStation(currentStation);
+        Radio radio = new Radio(1,100,10);
         radio.nextStation();
-        int expected = 8;
+        int expected = 2;
         assertEquals(expected, radio.getCurrentStation());
     }
 
     @Test
     void prevStation() {
-        Radio radio = new Radio();
-        int currentStation = 5;
-        radio.setCurrentStation(currentStation);
+        Radio radio = new Radio(1,100,10);
         radio.prevStation();
-        int expected = 4;
+        int expected = 0;
         assertEquals(expected, radio.getCurrentStation());
     }
     @Test
     void prevStationFromMinToMax() {
-        Radio radio = new Radio();
-        int currentStation = 0;
-        radio.setCurrentStation(currentStation);
+        Radio radio = new Radio(0,100,10);
         radio.prevStation();
-        int expected = 9;
+        int expected = radio.getMaxStation();
         assertEquals(expected, radio.getCurrentStation());
     }
     @Test
     public void setVolumeSoundHigherLimit() {
-        Radio radio = new Radio();
-        int volumeSound = 11;
+        Radio radio = new Radio(1,101,10);
         int expected = 0;
-        radio.setVolumeSound(volumeSound);
         assertEquals(expected, radio.getVolumeSound());
 
     }
     @Test
     public void setVolumeSoundLowerLimit() {
-        Radio radio = new Radio();
-        int volumeSound = -1;
+        Radio radio = new Radio(1,-1,10);
         int expected = 0;
-        radio.setVolumeSound(volumeSound);
         assertEquals(expected, radio.getVolumeSound());
 
     }
     @Test
     public void setCurrentStationLowerLimit() {
-        Radio radio = new Radio();
-        int currentStation = -1;
+        Radio radio = new Radio(-1,100,10);
         int expected = 0;
-        radio.setCurrentStation(currentStation);
         assertEquals(expected, radio.getCurrentStation());
 
     }
     @Test
     public void setCurrentStationHigherLimit() {
-        Radio radio = new Radio();
-        int currentStation = 10;
+        Radio radio = new Radio(11,100,10);
         int expected = 0;
-        radio.setCurrentStation(currentStation);
         assertEquals(expected, radio.getCurrentStation());
 
     }
